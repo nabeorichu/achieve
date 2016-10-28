@@ -1,0 +1,11 @@
+/Users/yuuyawatanabe/.rbenv/versions/2.2.3/bin/ruby -r ./siteconf20160816-69605-q0bgq1.rb extconf.rb
+creating Makefile
+
+make "DESTDIR=" clean
+
+make "DESTDIR="
+compiling debug_inspector.c
+linking shared-object debug_inspector.bundle
+
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 debug_inspector.bundle ./.gem.20160816-69605-sqt0re
