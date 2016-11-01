@@ -5,7 +5,8 @@ class TasksController < ApplicationController
   # GET /tasks.json
   def index
     @tasks = Task.where(user_id: paramas[:user_id]).where.not(done: true)
-                .order
+                .order(updated_at: desc)
+    @user = User.find(params[:user_id])
   end
 
   # GET /tasks/1
