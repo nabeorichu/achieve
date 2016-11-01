@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
   has_many :followed_users, through: :relationships, source: :followed
   has_many :followers, through: :reverse_relationships, source: :follower
 
+  mount_uploader :avatar, AvatarUploader
+
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(provider: auth.provider, uid: auth.uid).first
     unless user
@@ -68,5 +70,5 @@ class User < ActiveRecord::Base
   def unfollow!(other_user)
     relationships.find_by(followed_id: other_user.id).destroy
   end
-  mount_uploader :avatar, AvatarUploader
+
 end
