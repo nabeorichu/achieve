@@ -29,7 +29,6 @@ class CommentsController < ApplicationController
   end
 
   private
-    # ストロングパラメーター
     def comment_params
       params.require(:comment).permit(:blog_id, :content)
     end

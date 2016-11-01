@@ -1,0 +1,14 @@
+<div class="child row">
+
+  <div class="wrapper col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+    <div class="user-text">
+      <h2>ユーザー情報</h2>
+      <p class="left"><strong>名前</strong></p>
+      <p class="left"><%= @user.name %></p>
+      <p class="left"><strong>メールアドレス</strong></p>
+      <p class="left"><%= @user.email %></p>
+      <p class="left"><%= profile_img(@user) if profile_img(@user) %></p>
+    </div>
+      <%= render 'friends_index' %>
+  </div>
+</div>

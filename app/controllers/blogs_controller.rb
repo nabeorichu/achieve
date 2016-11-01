@@ -1,7 +1,7 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only:[:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-  
+
   def index
     @blogs = Blog.all
   end
@@ -16,7 +16,6 @@ class BlogsController < ApplicationController
       @blog = Blog.new(blogs_params)
     else
     @blog = Blog.new
-
     end
   end
 

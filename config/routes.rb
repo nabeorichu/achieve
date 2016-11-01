@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
 
   devise_for :users, controllers: {registrations: "users/registrations", omniauth_callbacks: "users/omniauth_callbacks"}
+  resources :users, only: [:index, :show]
+  resources :relationships, only: [:create, :destroy]
   resources :blogs do
     resources :comments
-      collection do
-        post :confirm
+    collection do
+      post :confirm
     end
   end
   if Rails.env.development?
@@ -15,11 +17,7 @@ Rails.application.routes.draw do
       post :confirm
     end
   end
-
   root 'top#index'
-
-  #"戻る"ボタン実行時のnewアクションにPOSTを追加する。
   post 'contacts/new' => 'contacts#new'
   post 'blogs/new' => 'blogs#new'
-
 end
