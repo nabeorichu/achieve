@@ -11,6 +11,8 @@ Devise.setup do |config|
 
   config.mailer_sender = 'noreply@yourdomain'
 
+  config.secret_key = ENV["DEVISE_SECRET_KEY"]
+
   require 'devise/orm/active_record'
 
   config.case_insensitive_keys = [:email]
