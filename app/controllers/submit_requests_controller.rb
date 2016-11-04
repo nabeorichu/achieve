@@ -96,7 +96,7 @@ class SubmitRequestsController < ApplicationController
     end
 
     def submit_params
-      @submit_request = SubmitRequest.find(params[:submit_request_id].to_i)
+      @submit_request = SubmitRequest.find(params[:submit_request_id])
     end
 
 end

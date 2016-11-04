@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :users, controllers: {registrations: "users/registrations", omniauth_callbacks: "users/omniauth_callbacks"}
-  resources :users, only: [:index] do
+  resources :users, only: [:index, :show] do
     resources :tasks
     resources :submit_requests , shallow: true do
       get 'approve'
