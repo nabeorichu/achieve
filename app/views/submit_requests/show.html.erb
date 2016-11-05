@@ -1,2 +1,7 @@
-<h1>SubmitRequests#show</h1>
-<p>Find me in app/views/submit_requests/show.html.erb</p>
+
+<p>
+  <strong>メッセージ</strong>
+  <%= @submit_request.message %>
+</p>
+
+<%= link_to '戻る', user_submit_requests_path(current_user) %>
