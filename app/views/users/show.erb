@@ -5,8 +5,6 @@
       <h2>ユーザー情報</h2>
       <p class="left"><strong>名前</strong></p>
       <p class="left"><%= @user.name %></p>
-      <p class="left"><strong>メールアドレス</strong></p>
-      <p class="left"><%= @user.email %></p>
       <p class="left"><%= profile_img(@user) if profile_img(@user) %></p>
     </div>
       <%= render 'friends_index' %>

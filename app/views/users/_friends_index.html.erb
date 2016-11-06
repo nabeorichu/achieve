@@ -4,7 +4,6 @@
       <li>
         <p class="left"><%= profile_img(followed_user) if profile_img(followed_user) %></p>
         <p class="left">名前<%= followed_user.name %></p>
-        <p class="left">メールアドレス<%= followed_user.email %></p>
       </li>
   <% end %>
   <p>フォロワー一覧</p>
@@ -12,7 +11,6 @@
       <li>
         <p class="left"><%= profile_img(follower) if profile_img(follower) %></p>
         <p class="left">名前<%= follower.name %></p>
-        <p class="left">メールアドレス<%= follower.email %></p>
       </li>
   <% end %>
 </ul>
