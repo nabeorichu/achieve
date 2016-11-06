@@ -63,7 +63,7 @@ class SubmitRequestsController < ApplicationController
   def approve
     @submit_request.update(status: 2)
     @submit_request.task.update(status: 2)
-    @submit_requests = SubmitRequest.where(charge_id: current_user.id).order(updated_at: :desc)
+    @submit_requests = SubmitRequest.task_select(current_user)
     respond_to do |format|
       format.js {render :reaction_inbox }
     end
@@ -72,7 +72,7 @@ class SubmitRequestsController < ApplicationController
   def unapprove
     @submit_request.update(status: 9)
     @submit_request.task.update(status: 9, charge_id: @submit_request.user_id)
-    @submit_requests = SubmitRequest.where(charge_id: current_user.id).order(updated_at: :desc)
+    @submit_requests = SubmitRequest.task_select(current_user)
     respond_to do |format|
       format.js {render :reaction_inbox}
     end
@@ -89,7 +89,7 @@ class SubmitRequestsController < ApplicationController
   end
 
   def inbox
-    @submit_requests = SubmitRequest.task_receive(current_user)
+    @submit_requests = SubmitRequest.task_select(current_user)
   end
 
   private
