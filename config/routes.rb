@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     end
   end
   resources :conversations do
-    resources :messagend
+    resources :messages
   end
 
   if Rails.env.development?

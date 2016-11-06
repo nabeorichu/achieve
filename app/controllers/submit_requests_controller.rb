@@ -21,7 +21,7 @@ class SubmitRequestsController < ApplicationController
     respond_to do |format|
       if @submit_request.save
         @submit_request.task.update(status: 1)
-        format.html { redirect_to user_submit_requests_path(current_user.id,@submit_request), notice: '依頼を送信しました。'}
+        format.html { redirect_to user_submit_requests_path(current_user.id), notice: '依頼を送信しました。'}
         format.json { render :show, status: :created, location: @submit_request}
       else
         format.html { render :new}
@@ -53,10 +53,10 @@ class SubmitRequestsController < ApplicationController
 
   def destroy
     @submit_request.destroy
-    @submit_requests = SubmitRequest.where(charge_id: current_user.id).order(updated_at: :desc)
+    @submit_requests = SubmitRequest.where(user_id: current_user.id).order(updated_at: :desc)
     respond_to do |format|
       format.js {render :reaction_index}
-      format.html { redirect_to user_submit_requests_path(current_user.id,@submit_request), notice: '依頼を削除しました。'}
+      format.html { redirect_to user_submit_requests_path(current_user.id), notice: '依頼を削除しました。'}
     end
   end
 
@@ -84,6 +84,7 @@ class SubmitRequestsController < ApplicationController
     @submit_requests = SubmitRequest.where(charge_id: current_user.id).order(updated_at: :desc)
     respond_to do |format|
       format.js {render :reaction_index}
+      format.html { redirect_to user_submit_requests_path(current_user), notice: '依頼を取消しました。'}
     end
   end
 
